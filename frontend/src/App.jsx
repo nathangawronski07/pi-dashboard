@@ -1,5 +1,5 @@
 import './App.css'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const mockWeather = { temp: 67, condition: "Sunny", fetched_at: "2026-10-19T14:00:00Z" };
 const mockTodos = [
@@ -7,21 +7,27 @@ const mockTodos = [
   { id: 2, title: "Study for exam", done: false },
   { id: 3, title: "Rugby practice", done: false },
 ];
+const mockTime = {hours: 11, minutes: 23, status: "PM"};
 
 export default function App() {
   const [todos, setTodos] = useState(mockTodos);
-
+  
+  // useState
+  // useEffect
+  // setInterval
+  // clearInterval
   function toggleTodo(id) {
     setTodos(todos.map(t => (t.id === id ? { ...t, done: !t.done } : t)));
   }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
-      <h1 className="text-4xl mb-6">Version 1</h1>
-
-      <div className="mb-8">
-        <p className="text-6xl">{mockWeather.temp}°F</p>
-        <p className="text-2xl">{mockWeather.condition}</p>
+      <h1 className="text-6xl mb-6">Good Morning, Nathan</h1>
+      <div className="mb-6"></div>
+        <p className="text-4xl">{mockTime.hours}:{mockTime.minutes} {mockTime.status}</p>
+      <div className="mb-6">
+        <p className="text-4xl">{mockWeather.temp}°F</p>
+        <p className="text-4xl">{mockWeather.condition}</p>
       </div>
 
       <ul className="text-2xl">

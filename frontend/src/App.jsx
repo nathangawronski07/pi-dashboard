@@ -2,6 +2,7 @@ import './App.css'
 import { useEffect, useState } from "react"
 import Clock from "./components/Clock";
 import WeatherCard from "./components/WeatherCard";
+import TodoList from './components/TodoList';
 
 const mockWeather = { temp: 67, condition: "Sunny", fetched_at: "2026-10-19T14:00:00Z" };
 const mockTodos = [
@@ -24,18 +25,11 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
       <h1 className="text-6xl mb-6">Good Morning, Nathan</h1>
-      <div className="mb-6">
-        <p className='text-4xl'><Clock /></p>
-        <p className='text-4xl'><WeatherCard weather={mockWeather} /></p>
+      <div className="grid grid-cols-3 gap-8">
+        <Clock />
+        <WeatherCard weather={mockWeather} />
+        <TodoList todos={todos} onToggle={toggleTodo} />
       </div>
-
-      <ul className="text-2xl">
-        {todos.map(t => (
-          <li key={t.id} onClick={() => toggleTodo(t.id)} className="cursor-pointer">
-            {t.done ? "✅" : "⬜"} {t.title}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

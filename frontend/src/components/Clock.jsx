@@ -8,6 +8,7 @@ export default function Clock() {
       setNow = new Date()
     }, 1000);
     return () => clearInterval(timer);
+
   }, []);
 
   return (

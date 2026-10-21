@@ -4,7 +4,7 @@ import Clock from "./components/Clock";
 import WeatherCard from "./components/WeatherCard";
 import TodoList from './components/TodoList';
 import Greeting from './components/Greeting';
-const mockWeather = { temp: 67, condition: "Sunny", fetched_at: "2026-10-19T14:00:00Z" };
+const mockWeather = { temp: 70, condition: "Sunny", fetched_at: "2026-10-19T14:00:00Z" };
 const mockTodos = [
   { id: 1, title: "read", done: false},
   { id: 2, title: "Study for exam", done: false },
@@ -24,7 +24,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-8">
-        <Greeting name={"Nathan"} />
+        <Greeting name="Nathan"/>
       <div className="grid grid-cols-3 gap-8">
         <div className="bg-gray-800 rounded-2xl p-6 text-gray-400">
           <Clock />

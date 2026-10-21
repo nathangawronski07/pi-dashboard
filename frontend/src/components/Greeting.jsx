@@ -4,13 +4,9 @@ export default function Greeting({ name }) {
   const [hour, setHour] = useState(new Date().getHours());
 
   useEffect(() => {
-    // TODO 1: create an interval that calls setHour with the current hour.
-    // Every 60 seconds is plenty, since the greeting only changes hourly.
-
-    // TODO 2: return a cleanup function that clears the interval
     const timer = setInterval(() => {
-      setHour = new Date().getHours()
-    }, 1000);
+      setHour(new Date().getHours())
+    }, 60000);
     return () => clearInterval(timer);
 
   }, []);

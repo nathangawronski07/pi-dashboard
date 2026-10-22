@@ -4,16 +4,21 @@ import Clock from "./components/Clock";
 import WeatherCard from "./components/WeatherCard";
 import TodoList from './components/TodoList';
 import Greeting from './components/Greeting';
-const mockWeather = { temp: 70, condition: "Sunny", fetched_at: "2026-10-19T14:00:00Z" };
-const mockTodos = [
-  { id: 1, title: "read", done: false},
-  { id: 2, title: "Study for exam", done: false },
-  { id: 3, title: "Rugby practice", done: false },
-];
 
 export default function App() {
-  const [todos, setTodos] = useState(mockTodos);
+  const [weather, setWeather] = useState(null);
+  const [todos, setTodos] = useState([]);
   
+  useEffect(() => {
+    fetch("http://localhost:8000/api/weather")
+      .then(res => res.json())
+      .then(data => setWeather(data));
+  }, []);
+    useEffect(() => {
+    fetch("http://localhost:8000/api/todos")
+      .then(res => res.json())
+      .then(data => setTodos(data));
+  }, []);
   // useState
   // useEffect
   // setInterval
@@ -30,7 +35,7 @@ export default function App() {
           <Clock />
         </div>
         <div className="bg-gray-800 rounded-2xl p-6 text-gray-400">
-          <WeatherCard weather={mockWeather} />
+          {weather && <WeatherCard weather={weather} />}
         </div>
         <div className="bg-gray-800 rounded-2xl p-6 text-gray-400">
           <TodoList todos={todos} onToggle={toggleTodo} />
